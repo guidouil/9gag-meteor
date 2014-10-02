@@ -1,0 +1,46 @@
+<head>
+  <title>9gag ScreenSaver</title>
+  <link rel="icon" href="/favicon.ico" />
+</head>
+
+
+<template name="layout">
+  {{> yield }}
+</template>
+
+
+<template name="carousel">
+  <div class="container fill">
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="active item ">
+          <div class="fill" style="background-image:url('/9gag_screensaver.jpg');">
+            <div class="container-fluid text-center">
+              <img src="/9gag_screensaver.jpg" alt="" align="center" class="img-polaroid">
+            </div>
+            <div class="carousel-caption"><h1><a href="http://9gag.com/gag/aqZKX7Q/" title="9gag.meteor.com" target="_blank">9gag.meteor.com</a></h1> </div>
+          </div>
+        </div>
+        {{#each Gags}}
+        <div class="item">
+          <div class="fill" style="background-image:url('{{images.large}}');">
+            <div class="container-fluid text-center">
+              <img src="{{images.large}}" alt="" align="center" class="img-polaroid">
+            </div>
+            <div class="carousel-caption">
+            <h1><a href="{{link}}" title="{{caption}}" target="_blank">{{caption}}</a>
+            <a class="btn" target="vote" href="{{actions.like}}" title="Like"><i class="icon-thumbs-up"></i> </a>
+            <a class="btn" target="vote" href="{{actions.dislike}}" title="Dislike"><i class="icon-thumbs-down"></i> </a></h1>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      <div class="pull-center">
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+      </div>
+    </div>
+  </div>
+  <iframe name="vote" hidden></iframe>
+</template>
